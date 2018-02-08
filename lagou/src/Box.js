@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Route, Link, Switch} from 'react-router-dom';
 
 import User from './pages/User';
 import App from './App';
-import Login from './pages/Login.js'
+import Login from './pages/Login'
 import Detail from './pages/Detail';
 
 class Box extends Component {

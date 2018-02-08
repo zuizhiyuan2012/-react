@@ -140,7 +140,7 @@ class Detail extends Component{
         
 	}
      handleBack(){
-          window.location="/position";  
+          window.location="./position";  
      }
 }
 

@@ -3,13 +3,22 @@ import {BrowserRouter as Router, Link} from 'react-router-dom';
 import './Search.css';
 import axios from 'axios';
 import $ from 'jquery';
+import PositionList from './PositionList';
+import SearchPosition from './SearchPosition';
+
 
 class Search extends Component{
 	constructor(){
 		super()
 		this.state={
 			list:[],
-			show:true
+			show:true,
+			nation:"全国",
+			city:[],
+			val:"",
+			style3:{display:"block"},
+            style4:{display:"none"},
+            flag:true
 		};
 		var storage;
 		//异步请求数据
@@ -22,9 +31,15 @@ class Search extends Component{
 			}			
 		})
 		this.change = this.change.bind(this);
+		this.getVal = this.getVal.bind(this);
+		this.handleValue = this.handleValue.bind(this);
+		this.val = this.val.bind(this);
 	}
 	render(){
-		// console.log(this.state)
+		var nation = this.state.city.map((elem,index)=>{
+			return (<SearchPosition work={elem} key={index}/>)
+		})
+		// console.log(nation)
 		return(
 			<div>
 				<div id="content"  style={ {display:this.state.show?"":"none",marginBottom:"0"} }>
@@ -34,36 +49,44 @@ class Search extends Component{
 		              <span className="cityicon"></span>
 		            </div>
 		            <div className="rinput">
-		              <input className="inputer" type="text" placeholder="搜索职位或公司" />
+		              <input className="inputer" onChange={this.handleValue} value={this.state.val} type="text" placeholder="搜索职位或公司" />
 		              <span className="search" onClick={this.val}><em className="searchicon"></em></span>
 		            </div>
 		          </div>
 		        </div>
+		        <div>{nation}</div>
 		        <SearchList city={this.state.list} bool={this.state.show} onChange={this.change}/>
 		    </div>)
 	}
 
 	change(e){
 		var s = this.state.show;
-		// console.log(s,$("#header")[0])
 		$("#header")[0].style.display = this.state.show ? "none" : "block";
 		this.setState({
 			show:!s
 		})
-		// src.style.display = this.state.show ? "none" : "block";
+	}
+	getVal(e){
+		this.setState({
+			city:e.target.innerText
+		})
+	}
+	handleValue(e){
+		this.setState({
+			val:e.target.value
+		})
+		
 	}
 	val(e){
-		var param = {};
-		var target = $(e.target).parents(".rinput").find(".inputer").val();
-		var storage = window.localStorage;
-		storage = target;
-		console.log(storage)
-		param.storage = storage;
-		axios.post("/api/list",function(res){
+		var _nation = this.state.nation;
+		var _val = this.state.val;
+		axios.post("/searchcity",{_nation,_val}).then((res)=>{
 			console.log(res)
-		// }).then(function(){
+			this.setState({
+				city:res.data.data
+			})
 			
-		})
+		})	
 	}
 }
 
@@ -129,7 +152,6 @@ class SearchList extends Component{
 	}
 	handle(e){
 		this.props.onChange(e.target);
-		// console.log(e.target)
 	}
 }
 export default Search
