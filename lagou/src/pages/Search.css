@@ -1,0 +1,127 @@
+#head{
+  height: 45px;
+  line-height: 45px;
+  background-color:#00b38a;
+  color: #fff;
+  font-size: 1.8rem;
+  text-align: center;
+  position: relative;
+}
+#head .left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 40px;
+}
+#head .left .corner {
+    width: 9px;
+    height: 20px;
+    margin: 13px auto 0 auto;
+    background: url(../img/icon2.png) no-repeat -1.5px -20.5px;
+    background-size: 250px 250px;
+    display: inline-block;
+}
+#content .linputer {
+    position: relative;
+    border-bottom: 1px solid #e8e8e8;
+    height: 45px;
+}
+#content .lbutton {
+    float: left;
+    height: 45px;
+    line-height: 45px;
+    font-size: 1.5rem;
+    text-align: center;
+    width: 88px;
+    border-right: 1px solid #e8e8e8;
+}
+#content .lbutton span {
+    display: inline-block;
+}
+#content .lbutton .cityicon {
+    width: 8.5px;
+    height: 7px;
+    margin-left: 5px;
+    background: url(../img/icon.png) no-repeat -1px -2.5px;
+    background-size: 250px 250px;
+}
+#content .rinput {
+    height: 45px;
+    margin-left: 89px;
+    position: relative;
+}
+#content .rinput:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden
+}
+#content .rinput .inputer {
+    display: block;
+    border: none;
+    padding: 10px 0;
+    height: 25px;
+    line-height: 25px;
+    color: #333333;
+    width: 75%;
+    margin: 0 0 0 5%;
+    font-size: 1.5rem;
+    float: left;
+}
+#content .rinput .search {
+    display: inline-block;
+    width: 20%;
+    height: 45px;
+    line-height: 45px;
+    float: right;
+    position: relative
+}
+#content .rinput .search .searchicon {
+    display: block;
+    margin: 14px auto 0 auto;
+    width: 17px;
+    height: 17px;
+    background: url(../img/icon.png) no-repeat -14px -2.5px;
+    background-size: 250px 250px;
+}
+.fdialog-container .fdialog-content {
+    height: 100%;
+    background-color: #fff;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    -moz-overflow-scrolling: touch;
+    overflow-scrolling: touch
+}
+.fdialog-container .fdialog-rcon {
+    margin-bottom: 45px;
+    padding-bottom: 45px
+}
+.cities-header {
+    border-bottom: 1px solid #e8e8e8;
+    height: 25px;
+    line-height: 25px;
+    padding: 0 15px;
+    font-size: 1.2rem;
+    color: #888
+}
+.cities-list-item{
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.cities-list {
+    width: 100%;
+    border-bottom: 1px solid #e8e8e8
+}
+.cities-item {
+    height: 60px;
+    width: 30%;
+    line-height: 60px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #333;
+    min-width: 100px
+}
